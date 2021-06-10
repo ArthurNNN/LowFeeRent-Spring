@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+	<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with Apartment Iterable List from BD H2</h1>
+		<h3>Table of apartment</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+			
+				<td > id</td>
+				<td > personId</td>
+				<td > area </td>
+				<td> rooms</td>
+				<td > bathrooms</td>
+				<td > address</td>
+				
+									
+
+			</tr>
+
+			<tr th:each="apartment:${apartmentListfromControllerAndDB}">
+
+
+				<td th:text="${apartment.id}"></td>
+				<td th:text="${apartment.personId}"></td>
+				<td th:text="${apartment.area}"></td>
+				<td th:text="${apartment.rooms}"></td>
+				<td th:text="${apartment.bathrooms}"></td>
+				<td th:text="${apartment.address}"></td>
+				
+
+			</tr>
+		</table>
+
+	</div>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+	<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with request Iterable List from BD H2</h1>
+		<h3>Table of request</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+
+			
+				<td > id</td>
+				<td > personId</td>
+				<td > areaMin </td>
+				<td> roomsMin</td>
+				<td > bathroomsMin</td>
+				
+									
+
+			</tr>
+
+			<tr th:each="request:${requestListfromControllerAndDB}">
+
+
+				<td th:text="${request.id}"></td>
+				<td th:text="${request.personId}"></td>
+				<td th:text="${request.areaMin}"></td>
+				<td th:text="${request.roomsMin}"></td>
+				<td th:text="${request.bathroomsMin}"></td>
+			
+
+			</tr>
+		</table>
+
+	</div>
+</html>

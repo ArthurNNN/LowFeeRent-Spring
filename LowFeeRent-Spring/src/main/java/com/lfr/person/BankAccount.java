@@ -1,4 +1,4 @@
-package appModels;
+package com.lfr.person;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +9,15 @@ import javax.persistence.Id;
 public class BankAccount {
 	
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
 	String iban;
 	double amount;
 	
+	
+	
+	public BankAccount() {
+		super();
+	}
+
 	public BankAccount(String iban, double amount) {
 		super();
 		this.iban = iban;

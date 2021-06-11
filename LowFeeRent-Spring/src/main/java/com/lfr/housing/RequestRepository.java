@@ -1,4 +1,4 @@
-package appControllers;
+package com.lfr.housing;
 
 import org.springframework.data.repository.CrudRepository;
 

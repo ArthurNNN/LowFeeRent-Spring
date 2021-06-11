@@ -1,4 +1,4 @@
-package appControllers;
+package com.lfr.housing;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -9,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.javafaker.Faker;
-
-import utils.Utils;
+import com.lfr.utils.Utils;
 
 @Controller
 @RequestMapping("/apartment")
@@ -30,7 +29,7 @@ public class ApartmentController {
 	@RequestMapping("/fillApartments")
 	public String fillApartments(Model boxToView) {
 		Faker faker = new Faker();
-		System.out.print("---------------- Adding 10 apartments: ----------------");
+		System.out.print("\n---------------- Adding apartments: ----------------");
 		int n = 1;
 		while (n <= 10) {
 			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(10, 20) * 10,

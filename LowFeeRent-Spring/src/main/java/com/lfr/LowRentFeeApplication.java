@@ -1,13 +1,13 @@
-package appControllers;
+package com.lfr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class appStart {
+public class LowRentFeeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(appStart.class, args);
+		SpringApplication.run(LowRentFeeApplication.class, args);
 
 	}
 

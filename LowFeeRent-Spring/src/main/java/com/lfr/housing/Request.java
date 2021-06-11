@@ -1,4 +1,4 @@
-package appControllers;
+package com.lfr.housing;
 
 import java.time.LocalDate;
 //import java.util.Date;
@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import utils.Utils;
+import com.lfr.utils.Utils;
 
 
 @Entity

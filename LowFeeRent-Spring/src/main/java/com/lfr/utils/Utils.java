@@ -1,4 +1,4 @@
-package utils;
+package com.lfr.utils;
 
 import java.util.Random;
 

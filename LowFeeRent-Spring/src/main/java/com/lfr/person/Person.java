@@ -1,10 +1,10 @@
-package appModels;
+package com.lfr.person;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import utils.*;
+import com.lfr.utils.*;
 
 @Entity
 @Table
@@ -24,7 +24,9 @@ public class Person {
 		this.setId();
 	}
 
-	public Person(String name, String surname, String email, BankAccount bankAccount) {
+	public Person(String name, String surname, String email
+			// , BankAccount bankAccount
+			) {
 		super();
 		this.setId();
 		this.name = name;
@@ -78,7 +80,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "\nPerson [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + 
+		return "Person [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + 
 			//	", bankAccount="				+ bankAccount + 
 				"]";
 	}

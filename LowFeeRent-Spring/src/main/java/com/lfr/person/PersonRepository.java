@@ -1,4 +1,4 @@
-package appControllers;
+package com.lfr.person;
 
 import org.springframework.data.repository.CrudRepository;
 

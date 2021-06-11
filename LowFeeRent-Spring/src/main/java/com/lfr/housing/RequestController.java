@@ -1,4 +1,4 @@
-package appControllers;
+package com.lfr.housing;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -9,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.javafaker.Faker;
-
-import utils.Utils;
+import com.lfr.utils.Utils;
 
 @Controller
 @RequestMapping("/request")

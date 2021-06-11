@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import java.time.LocalDate;
 //import java.util.Date;
@@ -29,9 +29,7 @@ public class Request {
 		this.setId();
 	}
 
-	public Request(
-			// LocalDate checkin, LocalDate checkout, 
-			int priceMax, Integer areaMin, Integer roomsMin,
+	public Request(LocalDate checkin, LocalDate checkout, int priceMax, Integer areaMin, Integer roomsMin,
 			Integer bathroomsMin) {
 		super();
 		this.setId();

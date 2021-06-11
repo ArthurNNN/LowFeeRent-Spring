@@ -1,8 +1,8 @@
-package controller;
+package appControllers;
 
 import utils.Utils;
-// import java.time.LocalDate;
-// import java.util.HashMap;
+import java.time.LocalDate;
+import java.util.HashMap;
 
 
 import javax.persistence.Entity;
@@ -19,9 +19,7 @@ public class Apartment {
 	@Id
 	String id;
 	String personId;
-	
-//	@OneToMany
-//	HashMap<LocalDate, LocalDate> openDates;
+	HashMap<LocalDate, LocalDate> openDates;
 	int price;
 	int area;
 	int rooms;
@@ -31,7 +29,7 @@ public class Apartment {
 	public Apartment() {
 		super();
 		this.setId();
-//		this.openDates = new HashMap<LocalDate, LocalDate>();
+		this.openDates = new HashMap<LocalDate, LocalDate>();
 	}
 
 	public Apartment(int price, int area, int rooms, int bathrooms,
@@ -63,13 +61,13 @@ public class Apartment {
 		this.personId = personId;
 	}
 
-//	public HashMap<LocalDate, LocalDate> getDates() {
-//		return openDates;
-//	}
+	public HashMap<LocalDate, LocalDate> getDates() {
+		return openDates;
+	}
 
-//	public void setDates(HashMap<LocalDate, LocalDate> dates) {
-//		this.openDates = dates;
-//	}
+	public void setDates(HashMap<LocalDate, LocalDate> dates) {
+		this.openDates = dates;
+	}
 
 	public String getAddress() {
 		return address;
@@ -111,13 +109,13 @@ public class Apartment {
 		this.bathrooms = bathrooms;
 	}
 
-//	public HashMap<LocalDate, LocalDate> getOpenDates() {
-//		return openDates;
-//	}
-//
-//	public void setOpenDates(HashMap<LocalDate, LocalDate> openDates) {
-//		this.openDates = openDates;
-//	}
+	public HashMap<LocalDate, LocalDate> getOpenDates() {
+		return openDates;
+	}
+
+	public void setOpenDates(HashMap<LocalDate, LocalDate> openDates) {
+		this.openDates = openDates;
+	}
 
 	@Override
 	public String toString() {

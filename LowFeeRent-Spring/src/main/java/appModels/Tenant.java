@@ -1,4 +1,4 @@
-package model;
+package appModels;
 
 public class Tenant extends Person {
 

@@ -1,4 +1,4 @@
-package controller;
+package appControllers;
 
 import org.springframework.data.repository.CrudRepository;
 

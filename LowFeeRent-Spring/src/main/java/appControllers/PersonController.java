@@ -1,4 +1,4 @@
-package model;
+package appControllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,9 @@ public class PersonController {
 
 	@RequestMapping("/allPersons")
 	public String getAllPersons(Model boxToView) {
-		
 
-		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll() );
+		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll());
 
-			
 		return "persons.html";
 	}
 

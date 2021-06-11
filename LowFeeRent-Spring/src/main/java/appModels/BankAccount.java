@@ -1,4 +1,4 @@
-package controller;
+package appModels;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

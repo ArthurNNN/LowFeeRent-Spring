@@ -1,4 +1,4 @@
-package model;
+package appControllers;
 
 import java.time.LocalDate;
 //import java.util.Date;
@@ -17,8 +17,8 @@ public class Request {
 	@Id
 	String id;
 	String personId;
-//	LocalDate checkin;
-//	LocalDate checkout;
+	LocalDate checkin;
+	LocalDate checkout;
 	int priceMax;
 	Integer areaMin;
 	Integer roomsMin;
@@ -29,12 +29,14 @@ public class Request {
 		this.setId();
 	}
 
-	public Request(LocalDate checkin, LocalDate checkout, int priceMax, Integer areaMin, Integer roomsMin,
+	public Request(
+			 LocalDate checkin, LocalDate checkout, 
+			int priceMax, Integer areaMin, Integer roomsMin,
 			Integer bathroomsMin) {
 		super();
 		this.setId();
-//		this.checkin = checkin;
-//		this.checkout = checkout;
+		this.checkin = checkin;
+		this.checkout = checkout;
 		this.priceMax = priceMax;
 		this.areaMin = areaMin;
 		this.roomsMin = roomsMin;
@@ -58,21 +60,21 @@ public class Request {
 		this.personId = personId;
 	}
 
-//	public LocalDate getCheckin() {
-//		return checkin;
-//	}
-//
-//	public void setCheckin(LocalDate checkin) {
-//		this.checkin = checkin;
-//	}
-//
-//	public LocalDate getCheckout() {
-//		return checkout;
-//	}
-//
-//	public void setCheckout(LocalDate checkout) {
-//		this.checkout = checkout;
-//	}
+	public LocalDate getCheckin() {
+		return checkin;
+	}
+
+	public void setCheckin(LocalDate checkin) {
+		this.checkin = checkin;
+	}
+
+	public LocalDate getCheckout() {
+		return checkout;
+	}
+
+	public void setCheckout(LocalDate checkout) {
+		this.checkout = checkout;
+	}
 
 	public int getPriceMax() {
 		return priceMax;

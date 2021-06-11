@@ -1,4 +1,4 @@
-package model;
+package appControllers;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

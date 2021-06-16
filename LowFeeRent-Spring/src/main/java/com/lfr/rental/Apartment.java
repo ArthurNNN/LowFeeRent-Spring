@@ -1,8 +1,7 @@
-package com.lfr.housing;
+package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,12 +10,10 @@ import javax.persistence.Table;
 
 import com.lfr.utils.Utils;
 
-
 @Entity
 @Table
 public class Apartment {
-	
-	
+
 	@Id
 	String id;
 	String personId;
@@ -27,21 +24,30 @@ public class Apartment {
 	int bathrooms;
 	String address;
 
-	public Apartment() {
-		super();
-		this.setId();
-		this.openDates = new HashMap<LocalDate, LocalDate>();
+	private static int counter;
+
+	public static int getNumOfInstances() {
+		return counter;
 	}
 
-	public Apartment(int price, int area, int rooms, int bathrooms,
-			String address) {
+	public Apartment() {
 		super();
+		//counter++;
+		this.setId();
+		this.openDates = new HashMap<LocalDate, LocalDate>();
+		
+	}
+
+	public Apartment(int price, int area, int rooms, int bathrooms, String address) {
+		super();
+		counter++;
 		this.setId();
 		this.price = price;
 		this.area = area;
 		this.rooms = rooms;
 		this.bathrooms = bathrooms;
 		this.address = address;
+		
 	}
 
 	public String getId() {
@@ -49,7 +55,11 @@ public class Apartment {
 	}
 
 	public void setId() {
-		this.id = "a" + Utils.generateId();
+		String part = "";
+		if (Apartment.getNumOfInstances() < 10) {
+			part = "0";
+		}
+		this.id = "a" + part + Apartment.getNumOfInstances();
 
 	}
 
@@ -120,9 +130,9 @@ public class Apartment {
 
 	@Override
 	public String toString() {
-		return "Apartment [id=" + id + ", personId=" + personId + 
-				// ", openDates=" + openDates + 
-				", price=" + price
-				+ ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address=" + address + "]";
+		return "Apartment [id=" + id + ", personId=" + personId +
+		// ", openDates=" + openDates +
+				", price=" + price + ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address="
+				+ address + "]";
 	}
 }

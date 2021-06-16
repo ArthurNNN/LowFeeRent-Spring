@@ -1,4 +1,4 @@
-package com.lfr.housing;
+package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -24,6 +24,26 @@ public class ApartmentController {
 		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
 
 		return "apartments.html";
+	}
+	
+	@RequestMapping("/template")
+	public String getHotel(
+			//Model boxToView
+			) {
+
+		//boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+
+		return "apartment-rental.html";
+	}
+	
+	@RequestMapping("/hotel")
+	public String getTemplate(
+			Model boxToView
+			) {
+
+		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+
+		return "hotel.html";
 	}
 
 	@RequestMapping("/fillApartments")

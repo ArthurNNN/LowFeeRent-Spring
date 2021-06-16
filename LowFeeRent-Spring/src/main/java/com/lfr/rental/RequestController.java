@@ -1,4 +1,4 @@
-package com.lfr.housing;
+package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.util.HashMap;

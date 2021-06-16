@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+	<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with BankAccount Iterable List from BD H2</h1>
+		<h3>Table of bankAccount</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+
+
+				<td > iban</td>
+				<td > amount </td>
+
+
+
+			</tr>
+
+			<tr th:each="bankAccount:${bankAccountListfromControllerAndDB}">
+
+
+
+				<td th:text="${bankAccount.iban}"></td>
+				<td th:text="${bankAccount.amount}"></td>
+
+
+
+			</tr>
+		</table>
+
+	</div>
+</html>

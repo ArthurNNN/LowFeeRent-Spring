@@ -1,4 +1,4 @@
-package com.lfr.housing;
+package com.lfr.rental;
 
 import org.springframework.data.repository.CrudRepository;
 

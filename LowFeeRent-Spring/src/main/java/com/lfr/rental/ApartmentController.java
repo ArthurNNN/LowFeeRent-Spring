@@ -7,52 +7,57 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.javafaker.Faker;
 import com.lfr.utils.Utils;
 
 @Controller
-@RequestMapping("/apartment")
+@RequestMapping("/")
 public class ApartmentController {
 
 	@Autowired
 	ApartmentRepository apartmentRepository;
-
-	@RequestMapping("/allApartments")
-	public String getAllApartments(Model boxToView) {
-
-		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
-
-		return "apartments.html";
-	}
 	
+	@Autowired
+	RequestRepository requestRepository;
+
 	@RequestMapping("/template")
 	public String getHotel(
-			//Model boxToView
-			) {
+	// Model boxToView
+	) {
 
-		//boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+		// boxToView.addAttribute("apartmentListfromControllerAndDB",
+		// apartmentRepository.findAll());
 
-		return "apartment-rental.html";
+		return "template.html";
 	}
-	
-	@RequestMapping("/hotel")
-	public String getTemplate(
-			Model boxToView
-			) {
+
+	@RequestMapping("/")
+	public String getApartments( Model boxToView) {
+		//System.out.println(request);
 
 		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+		
 
-		return "hotel.html";
+		return "home.html";
 	}
 
-	@RequestMapping("/fillApartments")
+	@RequestMapping("/filter")
+	public String createRequest(Request request) {
+		System.out.println(request);
+		requestRepository.save(request);
+
+		return "redirect:/home.html";
+	}
+
+	@RequestMapping("/fill")
 	public String fillApartments(Model boxToView) {
 		Faker faker = new Faker();
 		System.out.print("\n---------------- Adding apartments: ----------------");
 		int n = 1;
 		while (n <= 10) {
-			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(10, 20) * 10,
+			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
 					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
 
 			HashMap<LocalDate, LocalDate> dates = new HashMap<LocalDate, LocalDate>();
@@ -72,7 +77,7 @@ public class ApartmentController {
 
 		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
 
-		return "apartments.html";
+		return "redirect:/";
 	}
 
 }

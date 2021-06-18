@@ -8,6 +8,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" th:href="@{/css/w3.css}">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
@@ -31,13 +32,16 @@ body, h1, h2, h3, h4, h5, h6 {
 	<!-- Navigation Bar -->
 	<div class="w3-bar w3-white w3-large">
 		<a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i
-			class="fa fa-home w3-margin-right"></i>Logo</a> <a href="#apartments"
-			class="w3-bar-item w3-button w3-mobile">Apartments</a> <a
+			class="fa fa-home w3-margin-right"></i>LowFeeRent</a> <a
+			href="#apartments" class="w3-bar-item w3-button w3-mobile">Apartments</a>
+		<a href="#cities" class="w3-bar-item w3-button w3-mobile">Cities</a> <a
 			href="#about" class="w3-bar-item w3-button w3-mobile">About</a> <a
 			href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a> <a
-			href="#contact"
+			href="#book"
 			class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Book
-			Now</a>
+			Now</a> <a href="/fill"
+			class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Fill
+			DB</a>
 
 	</div>
 	<!-- Header -->
@@ -52,30 +56,17 @@ body, h1, h2, h3, h4, h5, h6 {
 				</h2>
 			</div>
 			<div class="w3-container w3-white w3-padding-16">
-				<form action="https://www.w3schools.com/action_page.php"
-					target="_blank">
+				<form action="createRequest" target="_blank">
 					<div class="w3-row-padding" style="margin: 0 -16px;">
 						<div class="w3-half w3-margin-bottom">
-							<label><i class="fa fa-calendar-o"></i> Check In</label> <input
-								class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
-								name="CheckIn" required="">
+							<label for="checkin"><i class="fa fa-calendar-o"></i>
+								Check In</label> <input class="w3-input w3-border" type="date"
+								placeholder="DD MM YYYY" name="checkin" required="">
 						</div>
 						<div class="w3-half">
-							<label><i class="fa fa-calendar-o"></i> Check Out</label> <input
-								class="w3-input w3-border" type="text" placeholder="DD MM YYYY"
-								name="CheckOut" required="">
-						</div>
-					</div>
-					<div class="w3-row-padding" style="margin: 8px -16px;">
-						<div class="w3-half w3-margin-bottom">
-							<label><i class="fa fa-male"></i> Adults</label> <input
-								class="w3-input w3-border" type="number" value="1" name="Adults"
-								min="1" max="6">
-						</div>
-						<div class="w3-half">
-							<label><i class="fa fa-child"></i> Kids</label> <input
-								class="w3-input w3-border" type="number" value="0" name="Kids"
-								min="0" max="6">
+							<label for="checkout"><i class="fa fa-calendar-o"></i>
+								Check Out</label> <input class="w3-input w3-border" type="date"
+								placeholder="DD MM YYYY" name="checkout" required="">
 						</div>
 					</div>
 					<button class="w3-button w3-dark-grey" type="submit">
@@ -89,34 +80,33 @@ body, h1, h2, h3, h4, h5, h6 {
 	<!-- Page content -->
 	<div class="w3-content" style="max-width: 1532px;">
 
-		<div class="w3-container w3-margin-top" id="rooms">
-			<h3>Rooms</h3>
+		<div class="w3-container w3-margin-top" id="apartments">
+			<h3>Apartments</h3>
 			<p>Make yourself at home is our slogan. We offer the best beds in
 				the industry. Sleep well and rest well.</p>
 		</div>
-
-		<div class="w3-row-padding">
-			<div class="w3-col m3">
-				<label><i class="fa fa-calendar-o"></i> Check In</label> <input
-					class="w3-input w3-border" type="text" placeholder="DD MM YYYY">
+		<form action="filterRequest" target="_blank">
+			<div class="w3-row-padding">
+				<div class="w3-col m3">
+					<label><i class="fa fa-arrows"></i> Area, m<sup>2</sup></label> <input name="area"
+						class="w3-input w3-border" type="number" placeholder="100" min=20 max=500>
+				</div>
+				<div class="w3-col m3">
+					<label><i class="fa fa-square"></i> Rooms</label> <input
+						name="rooms" class="w3-input w3-border" type="number"
+						placeholder="1" value=1 min=0 max=6>
+				</div>
+				<div class="w3-col m3">
+					<label><i class="fa fa-bath"></i> Bathrooms</label> <input
+						name="bathrooms" class="w3-input w3-border" type="number"
+						placeholder="1" value=1 min=0 max=6>
+				</div>
+				<div class="w3-col m3">
+					<label><i class="fa fa-search"></i> Filter</label>
+					<button class="w3-button w3-block w3-black">Filter</button>
+				</div>
 			</div>
-			<div class="w3-col m3">
-				<label><i class="fa fa-calendar-o"></i> Check Out</label> <input
-					class="w3-input w3-border" type="text" placeholder="DD MM YYYY">
-			</div>
-			<div class="w3-col m2">
-				<label><i class="fa fa-male"></i> Adults</label> <input
-					class="w3-input w3-border" type="number" placeholder="1">
-			</div>
-			<div class="w3-col m2">
-				<label><i class="fa fa-child"></i> Kids</label> <input
-					class="w3-input w3-border" type="number" placeholder="0">
-			</div>
-			<div class="w3-col m2">
-				<label><i class="fa fa-search"></i> Search</label>
-				<button class="w3-button w3-block w3-black">Search</button>
-			</div>
-		</div>
+		</form>
 
 		<div class="w3-row-padding w3-padding-16">
 			<div class="w3-third w3-margin-bottom"
@@ -124,55 +114,23 @@ body, h1, h2, h3, h4, h5, h6 {
 				<img th:src="@{/img/a/}+${apartment.id}+@{.jpg}" alt="Norway"
 					style="width: 100%">
 				<div class="w3-container w3-white">
-					<h3>Cosy apartment</h3>
-					<h6 class="w3-opacity">From €49</h6>
-					<p>Single bed</p>
+					<h3 th:text="${apartment.address}"></h3>
+					<h6 class="w3-opacity">
+						€<span th:text="${apartment.price}"></span>/month
+					</h6>
 					<p>
-						<span th:text="${apartment.area}"></span>m<sup>2</sup>
+						<span th:text="${apartment.area}"></span>m<sup>2</sup>, <span
+							th:text="${apartment.rooms}"></span> rooms, <span
+							th:text="${apartment.bathrooms}"></span> bathrooms
 					</p>
-					<p class="w3-large">
+					<!-- 	<p class="w3-large">
 						<i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i
 							class="fa fa-wifi"></i>
-					</p>
+					</p>  -->
 					<button class="w3-button w3-block w3-black w3-margin-bottom">Choose
 						Room</button>
 				</div>
 			</div>
-	<!-- 		<div class="w3-third w3-margin-bottom">
-				<img src="/img/a/a04.jpg" alt="Norway" style="width: 100%">
-				<div class="w3-container w3-white">
-					<h3>Apartment in the center</h3>
-					<h6 class="w3-opacity">From €99</h6>
-					<p>Queen-size bed</p>
-					<p>
-						25m<sup>2</sup>
-					</p>
-					<p class="w3-large">
-						<i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i
-							class="fa fa-wifi"></i> <i class="fa fa-tv"></i>
-					</p>
-					<button class="w3-button w3-block w3-black w3-margin-bottom">Choose
-						Room</button>
-				</div>
-			</div>
-			<div class="w3-third w3-margin-bottom">
-				<img src="/img/a/a05.jpg" alt="Norway" style="width: 100%">
-				<div class="w3-container w3-white">
-					<h3>Deluxe Apartment</h3>
-					<h6 class="w3-opacity">From €149</h6>
-					<p>King-size bed</p>
-					<p>
-						40m<sup>2</sup>
-					</p>
-					<p class="w3-large">
-						<i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i
-							class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i
-							class="fa fa-glass"></i> <i class="fa fa-cutlery"></i>
-					</p>
-					<button class="w3-button w3-block w3-black w3-margin-bottom">Choose
-						Room</button>
-				</div>
-			</div>  -->
 		</div>
 
 		<div class="w3-panel w3-padding-32">
@@ -254,9 +212,9 @@ body, h1, h2, h3, h4, h5, h6 {
 			</h6>
 		</div>
 
-		<div class="w3-container">
-			<h3>Our Hotels</h3>
-			<h6>You can find our hotels anywhere in the world:</h6>
+		<div class="w3-container" id="cities">
+			<h3>Our Cities</h3>
+			<h6>You can find apartments anywhere in the world:</h6>
 		</div>
 
 		<div class="w3-row-padding w3-padding-16 w3-text-white w3-large">
@@ -362,6 +320,14 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<!-- Add Google Maps -->
 	<script>
+		function getDate() {
+			var today = new Date();
+			console.log(today);
+			document.getElementById("date").value = today.getFullYear() + '-'
+					+ ('0' + (today.getMonth() + 1)).slice(-2) + '-'
+					+ ('0' + today.getDate()).slice(-2);
+
+		}
 		// Initialize and add the map
 		function initMap() {
 			// The location of Uluru
@@ -384,6 +350,11 @@ body, h1, h2, h3, h4, h5, h6 {
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0Ql4vFOhb7hCuDESjFeMzeGOUu_4VZ-Y&callback=initMap&libraries=&v=weekly"
 		async></script>
+
+
+	<script type="text/javascript">
+		
+	</script>
 	<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp

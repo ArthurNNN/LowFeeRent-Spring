@@ -18,7 +18,7 @@ public class BookingController {
 	@Autowired
 	BookingRepository bookingRepository;
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String getAllRequests(Model boxToView) {
 
 		boxToView.addAttribute("requestList", bookingRepository.findAll());
@@ -26,25 +26,5 @@ public class BookingController {
 		return "home.html";
 	}
 
-	@RequestMapping("/fill")
-	public String fillRequests(Model boxToView) {
-		System.out.print("---------------- Adding 10 requests: ----------------");
-		int n = 1;
-		while (n <= 10) {
-			Request request = new Request(LocalDate.of(2021, Utils.randRange(5, 6), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(6, 7), Utils.randRange(1, 28)), Utils.randRange(5, 18) * 100,
-					Utils.getRandomBoolean() ? Utils.randRange(8, 10) * 10 : 0,
-					Utils.getRandomBoolean() ? Utils.randRange(1, 5) : 0,
-					Utils.getRandomBoolean() ? Utils.randRange(1, 3) : 0);
-			request = bookingRepository.save(request);
-			System.out.print("\n#" + n + " ");
-			System.out.print(request);
-			n++;
-		}
-
-		boxToView.addAttribute("bookingList", bookingRepository.findAll());
-
-		return "home.html";
-	}
 
 }

@@ -7,40 +7,110 @@
 
 <body>
 
+	<!-- Navigation Bar -->
+	<div class="w3-bar w3-white w3-large">
+		<a href="/" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-home w3-margin-right"></i>LowFeeRent</a>
+		<a href="/admin" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-home w3-margin-right"></i>Admin Console</a>
+		<a href="/admin/fillApt" class="w3-bar-item w3-button w3-mobile">Apartments</a>
+		<a href="/admin/fillPers" class="w3-bar-item w3-button w3-mobile">Persons</a>
+		<a href="/admin/fillReq" class="w3-bar-item w3-button w3-mobile">Requests</a>
+		<a href="#book" class="w3-bar-item w3-button w3-mobile">Book Now</a>
+		<a href="/admin" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Exit</a>
+
+	</div>
+
 	<div class="w3-panel w3-padding-32">
 		<h1>Spring Boot with Apartment Iterable List from BD H2</h1>
 		<h3>Table of apartment</h3>
-
 		<table class="w3-table-all">
-
 			<tr class="w3-black w3-hover-teal">
-			
-				<td >id</td>
-				<td >personId</td>
-				<td >openDates</td>
-				<td >area</td>
-				<td >rooms</td>
-				<td >bathrooms</td>
-				<td >address</td>
-				
-									
-
+				<td>id</td>
+				<td>personId</td>
+				<td>openDates</td>
+				<td>price</td>
+				<td>area</td>
+				<td>rooms</td>
+				<td>bathrooms</td>
+				<td>address</td>
 			</tr>
-
 			<tr th:each="apartment:${apartmentListfromControllerAndDB}">
-
-
 				<td th:text="${apartment.id}"></td>
 				<td th:text="${apartment.personId}"></td>
 				<td th:text="${apartment.openDates}"></td>
+				<td th:text="${apartment.price}"></td>
 				<td th:text="${apartment.area}"></td>
 				<td th:text="${apartment.rooms}"></td>
 				<td th:text="${apartment.bathrooms}"></td>
 				<td th:text="${apartment.address}"></td>
-				
+			</tr>
+		</table>
+	</div>
+
+	<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with Person Iterable List from BD H2</h1>
+		<h3>Table of person</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+
+				<td > id</td>
+				<td > name</td>
+				<td > surname </td>
+				<td> email</td>
+			<!--	<td > bankAccount</td> -->
+
+			</tr>
+
+			<tr th:each="person:${personListfromControllerAndDB}">
+
+
+				<td th:text="${person.id}"></td>
+				<td th:text="${person.name}"></td>
+				<td th:text="${person.surname}"></td>
+
+				<td th:text="${person.email}"></td>
+			<!--	<td th:text="${person.bankAccount}"></td> -->
+			
+					<td><a th:href="@{deletePerson(id=${person.id})}"
+					class="w3-button w3-red">Delete</a> <a
+					th:href="@{detailPerson(id=${person.id})}"
+					class="w3-button w3-teal">Detail</a> <a
+					th:href="@{updatePerson(id=${person.id})}"
+					class="w3-button w3-blue">Update</a></td>
+
 
 			</tr>
 		</table>
 
+	</div>
+
+
+		<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with request Iterable List from BD H2</h1>
+		<h3>Table of request</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+				<td > id</td>
+				<td > checkin</td>
+				<td > checkout</td>
+				<td > personId</td>
+				<td > areaMin </td>
+				<td> roomsMin</td>
+				<td > bathroomsMin</td>
+			</tr>
+
+			<tr th:each="request:${requestListfromControllerAndDB}">
+				<td th:text="${request.id}"></td>
+				<td th:text="${request.checkin}"></td>
+				<td th:text="${request.checkout}"></td>
+				<td th:text="${request.personId}"></td>
+				<td th:text="${request.areaMin}"></td>
+				<td th:text="${request.roomsMin}"></td>
+				<td th:text="${request.bathroomsMin}"></td>
+			</tr>
+		</table>
 	</div>
 </html>

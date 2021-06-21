@@ -21,7 +21,7 @@ public class ApartmentController {
 
 
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String getApartments( Model boxToView) {
 		//System.out.println(request);
 

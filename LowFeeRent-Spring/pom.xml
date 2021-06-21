@@ -15,7 +15,7 @@
 	<name>LowFeeRent</name>
 	<description>Low Fee Rent Application</description>
 	<properties>
-		<java.version>11</java.version>
+<!-- 		<java.version>11</java.version> -->
 	</properties>
 	<dependencies>
 		<dependency>

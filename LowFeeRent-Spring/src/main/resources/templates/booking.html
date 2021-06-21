@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+
+	<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with booking Iterable List from BD H2</h1>
+		<h3>Table of booking</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+
+			
+				<td > id</td>
+				<td > personId</td>
+				<td > checkin</td>
+				<td > checkout</td>
+				<td> nights</td>
+				<td > amounts</td>
+			</tr>
+
+			<tr th:each="booking:${bookingListfromControllerAndDB}">
+				<td th:text="${booking.id}"></td>
+				<td th:text="${booking.personId}"></td>
+				<td th:text="${booking.checkin}"></td>
+				<td th:text="${booking.checkout}"></td>
+				<td th:text="${booking.nights}"></td>
+				<td th:text="${booking.amount}"></td>
+			
+
+			</tr>
+		</table>
+
+	</div>
+</html>

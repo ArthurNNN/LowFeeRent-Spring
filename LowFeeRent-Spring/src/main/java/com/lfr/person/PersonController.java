@@ -13,7 +13,7 @@ public class PersonController {
 	@Autowired
 	PersonRepository personRepository;
 
-	@RequestMapping("/allPersons")
+	@RequestMapping("/")
 	public String getAllPersons(Model boxToView) {
 
 		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll());
@@ -21,7 +21,7 @@ public class PersonController {
 		return "persons.html";
 	}
 
-	@RequestMapping("/fillPersons")
+	@RequestMapping("/fill")
 	public String fillAllPersons(Model boxToView) {
 
 		Faker faker = new Faker();

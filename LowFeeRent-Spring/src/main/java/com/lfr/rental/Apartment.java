@@ -3,6 +3,7 @@ package com.lfr.rental;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,15 +12,17 @@ import javax.persistence.Table;
 import com.lfr.utils.Utils;
 
 @Entity
-@Table
+@Table(name="apartment")
 public class Apartment {
 
 	@Id
 	String id;
 	String personId;
 	HashMap<LocalDate, LocalDate> openDates;
+	@Column(name="price")
 	int price;
 	int area;
+	@Column(name="rooms")
 	int rooms;
 	int bathrooms;
 	String address;

@@ -85,22 +85,28 @@ body, h1, h2, h3, h4, h5, h6 {
 			<p>Make yourself at home is our slogan. We offer the best beds in
 				the industry. Sleep well and rest well.</p>
 		</div>
-		<form action="filterRequest" target="_blank">
+		<form action="filter" target="_blank">
 			<div class="w3-row-padding">
 				<div class="w3-col m3">
-					<label><i class="fa fa-arrows"></i> Area, m<sup>2</sup></label> <input name="area"
-						class="w3-input w3-border" type="number" placeholder="100" min=20 max=500>
+					<label><i class="fa fa-arrows"></i> Price, €</label> <input
+						name="priceMax" class="w3-input w3-border" type="number"
+						placeholder="100" min=100 max=5000>
 				</div>
+<!-- 				<div class="w3-col m3"> -->
+<!-- 					<label><i class="fa fa-arrows"></i> Area, m<sup>2</sup></label> <input -->
+<!-- 						name="area" class="w3-input w3-border" type="number" -->
+<!-- 						placeholder="100" min=20 max=500> -->
+<!-- 				</div> -->
 				<div class="w3-col m3">
 					<label><i class="fa fa-square"></i> Rooms</label> <input
-						name="rooms" class="w3-input w3-border" type="number"
+						name="roomsMin" class="w3-input w3-border" type="number"
 						placeholder="1" value=1 min=0 max=6>
 				</div>
-				<div class="w3-col m3">
-					<label><i class="fa fa-bath"></i> Bathrooms</label> <input
-						name="bathrooms" class="w3-input w3-border" type="number"
-						placeholder="1" value=1 min=0 max=6>
-				</div>
+<!-- 				<div class="w3-col m3"> -->
+<!-- 					<label><i class="fa fa-bath"></i> Bathrooms</label> <input -->
+<!-- 						name="bathrooms" class="w3-input w3-border" type="number" -->
+<!-- 						placeholder="1" value=1 min=0 max=6> -->
+<!-- 				</div> -->
 				<div class="w3-col m3">
 					<label><i class="fa fa-search"></i> Filter</label>
 					<button class="w3-button w3-block w3-black">Filter</button>
@@ -141,6 +147,7 @@ body, h1, h2, h3, h4, h5, h6 {
 					<td>id</td>
 					<td>personId</td>
 					<td>openDates</td>
+					<td>price</td>
 					<td>area</td>
 					<td>rooms</td>
 					<td>bathrooms</td>
@@ -150,6 +157,7 @@ body, h1, h2, h3, h4, h5, h6 {
 					<td th:text="${apartment.id}"></td>
 					<td th:text="${apartment.personId}"></td>
 					<td th:text="${apartment.openDates}"></td>
+					<td th:text="${apartment.price}"></td>
 					<td th:text="${apartment.area}"></td>
 					<td th:text="${apartment.rooms}"></td>
 					<td th:text="${apartment.bathrooms}"></td>

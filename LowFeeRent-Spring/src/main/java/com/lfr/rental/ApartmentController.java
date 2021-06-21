@@ -22,16 +22,6 @@ public class ApartmentController {
 	@Autowired
 	RequestRepository requestRepository;
 
-	@RequestMapping("/template")
-	public String getHotel(
-	// Model boxToView
-	) {
-
-		// boxToView.addAttribute("apartmentListfromControllerAndDB",
-		// apartmentRepository.findAll());
-
-		return "template.html";
-	}
 
 	@RequestMapping("/")
 	public String getApartments( Model boxToView) {
@@ -44,11 +34,13 @@ public class ApartmentController {
 	}
 
 	@RequestMapping("/filter")
-	public String createRequest(Request request) {
+	public String filterApartments(Request request, Model boxToView) {
 		System.out.println(request);
-		requestRepository.save(request);
+		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+//		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findByPriceAndRooms(request.priceMax, request.roomsMin));
+		//requestRepository.save(request);
 
-		return "redirect:/home.html";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/fill")

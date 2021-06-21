@@ -12,21 +12,21 @@ import com.github.javafaker.Faker;
 import com.lfr.utils.Utils;
 
 @Controller
-@RequestMapping("/request")
-public class RequestController {
+@RequestMapping("/booking")
+public class BookingController {
 
 	@Autowired
-	RequestRepository requestRepository;
+	BookingRepository bookingRepository;
 
 	@RequestMapping("/")
 	public String getAllRequests(Model boxToView) {
 
-		boxToView.addAttribute("requestListfromControllerAndDB", requestRepository.findAll());
+		boxToView.addAttribute("requestList", bookingRepository.findAll());
 
-		return "requests.html";
+		return "home.html";
 	}
 
-	@RequestMapping("/fillRequests")
+	@RequestMapping("/fill")
 	public String fillRequests(Model boxToView) {
 		System.out.print("---------------- Adding 10 requests: ----------------");
 		int n = 1;
@@ -36,15 +36,15 @@ public class RequestController {
 					Utils.getRandomBoolean() ? Utils.randRange(8, 10) * 10 : 0,
 					Utils.getRandomBoolean() ? Utils.randRange(1, 5) : 0,
 					Utils.getRandomBoolean() ? Utils.randRange(1, 3) : 0);
-			request = requestRepository.save(request);
+			request = bookingRepository.save(request);
 			System.out.print("\n#" + n + " ");
 			System.out.print(request);
 			n++;
 		}
 
-		boxToView.addAttribute("requestListfromControllerAndDB", requestRepository.findAll());
+		boxToView.addAttribute("bookingList", bookingRepository.findAll());
 
-		return "requests.html";
+		return "home.html";
 	}
 
 }

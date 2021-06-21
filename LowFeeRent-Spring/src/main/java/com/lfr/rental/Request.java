@@ -9,11 +9,10 @@ import javax.persistence.Table;
 
 import com.lfr.utils.Utils;
 
-
 @Entity
 @Table
 public class Request {
-	
+
 	@Id
 	String id;
 	String personId;
@@ -29,9 +28,14 @@ public class Request {
 		this.setId();
 	}
 
-	public Request(
-			 LocalDate checkin, LocalDate checkout, 
-			int priceMax, Integer areaMin, Integer roomsMin,
+	public Request(int priceMax, Integer roomsMin) {
+		super();
+		this.setId();
+		this.priceMax = priceMax;
+		this.roomsMin = roomsMin;
+	}
+
+	public Request(LocalDate checkin, LocalDate checkout, int priceMax, Integer areaMin, Integer roomsMin,
 			Integer bathroomsMin) {
 		super();
 		this.setId();
@@ -110,8 +114,8 @@ public class Request {
 
 	@Override
 	public String toString() {
-		return "Request [id=" + id + ", personId=" + personId 
-				// + ", checkin=" + checkin + ", checkout=" + checkout
+		return "Request [id=" + id + ", personId=" + personId
+		// + ", checkin=" + checkin + ", checkout=" + checkout
 				+ ", priceMax=" + priceMax + ", areaMin=" + areaMin + ", roomsMin=" + roomsMin + ", bathroomsMin="
 				+ bathroomsMin + "]";
 	}

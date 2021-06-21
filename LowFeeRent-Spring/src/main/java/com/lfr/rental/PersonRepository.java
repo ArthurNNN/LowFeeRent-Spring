@@ -1,4 +1,4 @@
-package com.lfr.person;
+package com.lfr.rental;
 
 import org.springframework.data.repository.CrudRepository;
 

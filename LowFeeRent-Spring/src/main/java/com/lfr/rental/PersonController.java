@@ -1,4 +1,4 @@
-package com.lfr.person;
+package com.lfr.rental;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

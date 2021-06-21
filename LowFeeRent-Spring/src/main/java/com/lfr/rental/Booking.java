@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.lfr.person.Person;
 import com.lfr.utils.Utils;
 
 @Entity

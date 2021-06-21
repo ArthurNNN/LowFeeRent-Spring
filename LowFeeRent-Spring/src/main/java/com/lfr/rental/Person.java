@@ -1,4 +1,4 @@
-package com.lfr.person;
+package com.lfr.rental;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

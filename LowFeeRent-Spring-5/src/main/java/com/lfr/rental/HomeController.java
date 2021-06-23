@@ -30,7 +30,7 @@ public class HomeController {
 		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
 		
 
-		return "home.html";
+		return "lowfeerent.html";
 	}
 
 	@RequestMapping("/filter")

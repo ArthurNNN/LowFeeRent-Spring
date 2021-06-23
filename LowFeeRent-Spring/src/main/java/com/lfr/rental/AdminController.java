@@ -38,88 +38,10 @@ public class AdminController {
 		return "admin.html";
 	}
 
-	@RequestMapping("/fillApt")
-	public String fillApartments(Model boxToView) {
-		Faker faker = new Faker();
-		System.out.print("\n---------------- Adding apartments: ----------------");
-		int n = 1;
-		while (n <= 10) {
-			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
-					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
+	
 
-			HashMap<LocalDate, LocalDate> dates = new HashMap<LocalDate, LocalDate>();
-			dates.put(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
-			dates.put(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
-			dates.put(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)),
-					LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
-			apartment.setOpenDates(dates);
 
-			apartment = apartmentRepository.save(apartment);
-			System.out.print("\n#" + n + " ");
-			System.out.print(apartment);
-			n++;
-		}
 
-		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll());
-
-		return "redirect:/admin";
-	}
-
-	@RequestMapping("/fillPers")
-	public String fillAllPersons(Model boxToView) {
-
-		Faker faker = new Faker();
-
-		System.out.print("\n---------------- Add persons: ----------------");
-		int n = 1;
-		while (n <= 10) {
-			Person person = new Person();
-			person.setName(faker.name().firstName());
-			person.setSurname(faker.name().lastName());
-			person.setEmail(faker.internet().emailAddress());
-			System.out.print("\n#" + n + " ");
-			System.out.print(person);
-			n++;
-			person = personRepository.save(person);
-			System.out.print("\n#" + n + " ");
-			System.out.print(person);
-			n++;
-
-		}
-
-		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll());
-
-		return "redirect:/admin";
-	}
-
-//	public class Booking {
-//
-//		@Id
-//		String id;
-//		String personId;
-//		String aptId;
-//		LocalDate checkin;
-//		LocalDate checkout;
-//		int nights;
-//		int amount;
-//
-//		public Booking() {
-//			super();
-//			this.setId();
-//		}
-//
-//		public Booking(Person person, Apartment apt, LocalDate checkin, LocalDate checkout, int amount) {
-//			super();
-//			this.setId();
-//			this.personId = person.getId();
-//			this.aptId = apt.getId();
-//			this.checkin = checkin;
-//			this.checkout = checkout;
-//			this.nights = Period.between(checkin, checkout).getDays();
-//			this.amount = amount;
-//		}
 
 	@RequestMapping("/fillBook")
 	public String fillInBookings(Model boxToView) {

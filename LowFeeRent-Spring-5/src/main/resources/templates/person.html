@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" th:href="@{/css/w3.css}">
+<link rel="stylesheet" th:href="@{/css/css.css}">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" />
+
+<body>
+
+<!-- Navigation Bar -->
+	<div class="topnav" id="myTopnav">
+		<a href="/admin" class="w3-bar-item w3-button w3-red w3-mobile">Admin
+			Console</a>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Apartment <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a th:href="@{/apartment/allApartments}">All apartments</a> <a
+					th:href="@{/apartment/fillIn10Apartments}">Fill in 10
+					apartments</a> <a th:href="@{/apartment/deleteAllApartments}">Delete
+					all apartments</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Person <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a th:href="@{/person/allPersons}">All persons</a> <a
+					th:href="@{/person/fillIn10Persons}">Fill in 10 persons</a> <a
+					th:href="@{/person/deleteAllPersons}">Delete all persons</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="dropbtn">
+				Booking <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a th:href="@{/booking/allBookings}">All bookings</a> <a
+					th:href="@{/booking/fillIn10Bookings}">Fill in 10 bookings</a> <a
+					th:href="@{/booking/deleteAllBookings}">Delete all bookings</a>
+			</div>
+		</div>
+		<a href="#about">About</a> <a href="javascript:void(0);"
+			style="font-size: 15px;" class="icon" onclick="myFunction()">&#9776;</a>
+		<a href="/"
+			class="w3-bar-item w3-button w3-right w3-red w3-red w3-mobile">Exit
+			to Home</a>
+	</div>
+<!-- End Of Navigation Bar -->
+
+	<div class="w3-panel w3-padding-32">
+		<h1>Spring Boot with Person Iterable List from BD H2</h1>
+		<h3>Table of person</h3>
+
+		<table class="w3-table-all">
+
+			<tr class="w3-black w3-hover-teal">
+
+				<td > id</td>
+				<td > name</td>
+				<td > surname </td>
+				<td> email</td>
+				<td> operations</td>
+			<!--	<td > bankAccount</td> -->
+
+			</tr>
+
+			<tr th:each="person:${personListfromControllerAndDB}">
+
+
+				<td th:text="${person.id}"></td>
+				<td th:text="${person.name}"></td>
+				<td th:text="${person.surname}"></td>
+				<td th:text="${person.email}"></td>
+			<!--	<td th:text="${person.bankAccount}"></td> -->
+			
+					<td><a th:href="@{deletePerson(id=${person.id})}"
+					class="w3-button w3-red">Delete</a> <a
+					th:href="@{detailPerson(id=${person.id})}"
+					class="w3-button w3-teal">Detail</a> <a
+					th:href="@{updatePerson(id=${person.id})}"
+					class="w3-button w3-blue">Update</a></td>
+
+
+			</tr>
+		</table>
+
+	</div>
+</html>

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" th:href="@{/css/w3.css}">
@@ -57,10 +55,37 @@
 	<!-- End Of Navigation Bar -->
 
 
-	<div class="w3-panel w3-padding-32">
-		<h1>Admin Console</h1>
-		<h3>Table of content</h3>
+	<!-- Cart info -->
+	<div id="id02" class="w3-modal">
+		<div class="w3-modal-content">
+			<div class="w3-container">
+				<span onclick="document.getElementById('id02').style.display='none'"
+					class="w3-button w3-display-topright">&times;</span>
+				<p>Your id session is: 15611354BGET5GG</p>
+				<p>Your name is: Alan Smith</p>
+				<p>Status: CREATED</p>
+			</div>
+		</div>
 	</div>
+
+
+
+
+	<!-- Content Section -->
+	<section layout:fragment="content">
+		<p>This is filled by the content template.</p>
+	</section>
+
+
+	<!-- Footer -->
+	<footer>
+		<div class="footer">
+			<p>2021 Java Spring with Layout Thymeleaf. All rights reserved.</p>
+		</div>
+	</footer>
+
+	<!-- Optional Section -->
+	<th:block layout:fragment="optional" />
 
 	<script>
 		function myFunction() {

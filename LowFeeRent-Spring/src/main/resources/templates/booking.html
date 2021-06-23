@@ -9,19 +9,17 @@
 
 	<div class="w3-panel w3-padding-32">
 		<h1>Spring Boot with booking Iterable List from BD H2</h1>
-		<h3>Table of booking</h3>
+		<h3>Table of bookings</h3>
 
 		<table class="w3-table-all">
 
 			<tr class="w3-black w3-hover-teal">
-
-			
-				<td > id</td>
-				<td > personId</td>
-				<td > checkin</td>
-				<td > checkout</td>
-				<td> nights</td>
-				<td > amounts</td>
+				<td>id</td>
+				<td>personId</td>
+				<td>checkin</td>
+				<td>checkout</td>
+				<td>nights</td>
+				<td>amounts</td>
 			</tr>
 
 			<tr th:each="booking:${bookingListfromControllerAndDB}">
@@ -31,10 +29,15 @@
 				<td th:text="${booking.checkout}"></td>
 				<td th:text="${booking.nights}"></td>
 				<td th:text="${booking.amount}"></td>
-			
+
+				<td><a th:href="@{deleteApartment(id=${apartment.id})}"
+					class="w3-button w3-red">Delete</a> <a
+					th:href="@{detailApartment(id=${apartment.id})}"
+					class="w3-button w3-teal">Detail</a> <a
+					th:href="@{updateApartment(id=${apartment.id})}"
+					class="w3-button w3-blue">Update</a></td>
 
 			</tr>
 		</table>
-
 	</div>
 </html>

@@ -4,110 +4,141 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
 
+.navbar {
+  overflow: hidden;
+  background-color: #333; 
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: red;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: red;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+</style>
 <body>
 
 	<!-- Navigation Bar -->
-	<div class="w3-bar w3-white w3-large">
-		<a href="/" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-home w3-margin-right"></i>LowFeeRent</a>
-		<a href="/admin/fillApt" class="w3-bar-item w3-button w3-mobile">Apartments</a>
-		<a href="/admin/fillPers" class="w3-bar-item w3-button w3-mobile">Persons</a>
-		<a href="/admin/fillBook" class="w3-bar-item w3-button w3-mobile">Bookings</a>
-		<a href="#book" class="w3-bar-item w3-button w3-mobile">Book Now</a>
-		<a href="/admin" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Exit</a>
+<!-- 	<div class="w3-bar w3-white w3-large subnav"> -->
+<!-- 		<a href="/" class="w3-bar-item w3-button w3-red w3-mobile"><i -->
+<!-- 			class="fa fa-home w3-margin-right"></i>LowFeeRent</a> -->
 
+<!-- 		<div class="dropdown w3-bar-item w3-button w3-mobile"> -->
+<!-- 			<button class="dropbtn"> -->
+<!-- 				<i class="fa fa-home w3-margin-right"></i> Apartments <i -->
+<!-- 					class="fa fa-caret-down"></i> -->
+<!-- 			</button> -->
+<!-- 			<div class="dropdown-content"> -->
+<!-- 				<a href="/allapartment">Link 1</a> <a href="/fillinapartments">Link -->
+<!-- 					2</a> <a href="#">Link 3</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+
+<!-- 		<a href="/person" class="w3-bar-item w3-button w3-mobile">Persons</a> -->
+<!-- 		<a href="/booking" class="w3-bar-item w3-button w3-mobile">Bookings</a> -->
+<!-- 		<a href="#book" class="w3-bar-item w3-button w3-mobile">Book Now</a> <a -->
+<!-- 			href="/admin" -->
+<!-- 			class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Exit</a> -->
+
+<!-- 	</div> -->
+
+	<div class="navbar">
+		<a href="/" class="w3-bar-item w3-button w3-red w3-mobile"><i
+			class="fa fa-home w3-margin-right"></i>LowFeeRent</a>
+		<div class="subnav">
+			<button class="subnavbtn">
+				<i class="fa fa-home w3-margin-right"></i>Apartment <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="subnav-content">
+				<a href="/apartment">All Apartments</a> <a href="/fillinapartments">Fill In & Delete Apartments</a>
+			</div>
+		</div>
+		<div class="subnav">
+			<button class="subnavbtn">
+				Services <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="subnav-content">
+				<a href="#bring">Bring</a> <a href="#deliver">Deliver</a> <a
+					href="#package">Package</a> <a href="#express">Express</a>
+			</div>
+		</div>
+		<div class="subnav">
+			<button class="subnavbtn">
+				Partners <i class="fa fa-caret-down"></i>
+			</button>
+			<div class="subnav-content">
+				<a href="#link1">Link 1</a> <a href="#link2">Link 2</a> <a
+					href="#link3">Link 3</a> <a href="#link4">Link 4</a>
+			</div>
+		</div>
+		<a href="#contact">Contact</a>
 	</div>
 
 	<div class="w3-panel w3-padding-32">
-		<h1>Spring Boot with Apartment Iterable List from BD H2</h1>
+		<h1>Admin Console</h1>
 		<h3>Table of apartment</h3>
-		<table class="w3-table-all">
-			<tr class="w3-black w3-hover-teal">
-				<td>id</td>
-				<td>personId</td>
-				<td>openDates</td>
-				<td>price</td>
-				<td>area</td>
-				<td>rooms</td>
-				<td>bathrooms</td>
-				<td>address</td>
-			</tr>
-			<tr th:each="apartment:${apartmentListfromControllerAndDB}">
-				<td th:text="${apartment.id}"></td>
-				<td th:text="${apartment.personId}"></td>
-				<td th:text="${apartment.openDates}"></td>
-				<td th:text="${apartment.price}"></td>
-				<td th:text="${apartment.area}"></td>
-				<td th:text="${apartment.rooms}"></td>
-				<td th:text="${apartment.bathrooms}"></td>
-				<td th:text="${apartment.address}"></td>
-			</tr>
-		</table>
 	</div>
 
-	<div class="w3-panel w3-padding-32">
-		<h1>Spring Boot with Person Iterable List from BD H2</h1>
-		<h3>Table of person</h3>
-
-		<table class="w3-table-all">
-
-			<tr class="w3-black w3-hover-teal">
-
-				<td > id</td>
-				<td > name</td>
-				<td > surname </td>
-				<td> email</td>
-			<!--	<td > bankAccount</td> -->
-
-			</tr>
-
-			<tr th:each="person:${personListfromControllerAndDB}">
-
-
-				<td th:text="${person.id}"></td>
-				<td th:text="${person.name}"></td>
-				<td th:text="${person.surname}"></td>
-
-				<td th:text="${person.email}"></td>
-			<!--	<td th:text="${person.bankAccount}"></td> -->
-			
-					<td><a th:href="@{deletePerson(id=${person.id})}"
-					class="w3-button w3-red">Delete</a> <a
-					th:href="@{detailPerson(id=${person.id})}"
-					class="w3-button w3-teal">Detail</a> <a
-					th:href="@{updatePerson(id=${person.id})}"
-					class="w3-button w3-blue">Update</a></td>
-
-
-			</tr>
-		</table>
-
-	</div>
-
-
-		<div class="w3-panel w3-padding-32">
-		<h1>Spring Boot with booking Iterable List from BD H2</h1>
-		<h3>Table of bookings</h3>
-
-		<table class="w3-table-all">
-
-			<tr class="w3-black w3-hover-teal">
-				<td > id</td>
-				<td > personId</td>
-				<td > checkin</td>
-				<td > checkout</td>
-				<td> nights</td>
-				<td > amounts</td>
-			</tr>
-
-			<tr th:each="booking:${bookingListfromControllerAndDB}">
-				<td th:text="${booking.id}"></td>
-				<td th:text="${booking.personId}"></td>
-				<td th:text="${booking.checkin}"></td>
-				<td th:text="${booking.checkout}"></td>
-				<td th:text="${booking.nights}"></td>
-				<td th:text="${booking.amount}"></td>
-			</tr>
-		</table>
-	</div>
+	<script>
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
+			}
+		}
+	</script>
 </html>

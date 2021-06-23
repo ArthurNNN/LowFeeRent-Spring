@@ -34,7 +34,6 @@ public class AdminController {
 		// System.out.println(request);
 
 		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
-		boxToView.addAttribute("personListfromControllerAndDB", personRepository.findAll());
 
 		return "admin.html";
 	}

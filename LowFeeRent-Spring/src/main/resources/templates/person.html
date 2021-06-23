@@ -32,6 +32,13 @@
 
 				<td th:text="${person.email}"></td>
 			<!--	<td th:text="${person.bankAccount}"></td> -->
+			
+					<td><a th:href="@{deletePerson(id=${person.id})}"
+					class="w3-button w3-red">Delete</a> <a
+					th:href="@{detailPerson(id=${person.id})}"
+					class="w3-button w3-teal">Detail</a> <a
+					th:href="@{updatePerson(id=${person.id})}"
+					class="w3-button w3-blue">Update</a></td>
 
 
 			</tr>

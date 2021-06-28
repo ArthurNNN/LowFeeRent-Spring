@@ -21,9 +21,11 @@ public class Apartment {
 	HashMap<LocalDate, LocalDate> openDates;
 	@Column(name="price")
 	int price;
+	@Column(name="area")
 	int area;
 	@Column(name="rooms")
 	int rooms;
+	@Column(name="bathrooms")
 	int bathrooms;
 	String address;
 

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,41 +19,46 @@ public class HomeController {
 
 	@Autowired
 	ApartmentRepository apartmentRepository;
-	
+
 	@Autowired
 	RequestRepository requestRepository;
 
-
 	@RequestMapping("/")
-	public String getApartments( Model boxToView) {
-		//System.out.println(request);
+	public String getApartments(Model boxToView, @Param("price") Integer price, @Param("area") Integer area,
+			@Param("rooms") Integer rooms, @Param("bathrooms") Integer bathrooms) {
 
-		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
-		
+//		System.out.println("price: " + price);
+//		System.out.println("price >= null: " + (1500 > null));
+//		System.out.println("area: " + area);
+//		System.out.println("rooms: " + rooms);
+//		System.out.println("bathrooms: " + bathrooms);
+
+		if (price == null) {
+			price = 10000;
+		}
+		if (area == null) {
+			area = 0;
+		}
+		if (rooms == null) {
+			rooms = 0;
+		}
+		if (bathrooms == null) {
+			bathrooms = 0;
+		}
+
+		boxToView.addAttribute("apartmentList", apartmentRepository.fetchApartments(price, area, rooms, bathrooms));
+
 
 		return "lowfeerent.html";
 	}
 
-	@RequestMapping("/filter")
-	public String filterApartments(Request request, Model boxToView) {
-		System.out.println(request);
-		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
-//		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findByPriceAndRooms(request.priceMax, request.roomsMin));
-		//requestRepository.save(request);
-
-		return "redirect:/";
-	}
-	
 	@RequestMapping("/admin")
-	public String getAdminConsole( Model boxToView) {
-		//System.out.println(request);
+	public String getAdminConsole(Model boxToView) {
+		// System.out.println(request);
 
-		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
-		
+		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 
 		return "admin.html";
 	}
-
-	
 
 }

@@ -2,6 +2,7 @@ package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,8 @@ public class ApartmentController {
 			n++;
 		}
 
-		boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+//		boxToView.addAttribute("apartmentList", apartmentRepository.fetchApartments(1000));
+		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 
 		return "redirect:/apartment/allApartments";
 	}
@@ -69,7 +71,7 @@ public class ApartmentController {
 		@RequestMapping("/allApartments")
 		public String getApartments(Model boxToView) {
 
-			boxToView.addAttribute("apartmentListfromControllerAndDB", apartmentRepository.findAll());
+			boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 
 			return "apartment.html";
 		}

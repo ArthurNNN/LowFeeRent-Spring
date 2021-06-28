@@ -25,7 +25,7 @@
 			<input type="text" id="myInput" onkeyup="myFunction()"
 				placeholder="Search for anything.." title="Type in a name">
 		</div>
-		<table class="w3-table-all">
+		<table class="w3-table-all" id="myTable">
 			<tr class="w3-black w3-hover-teal">
 				<td>id</td>
 				<td>personId</td>
@@ -37,7 +37,7 @@
 				<td>address</td>
 				<td>operations</td>
 			</tr>
-			<tr th:each="apartment:${apartmentListfromControllerAndDB}">
+			<tr th:each="apartment:${apartmentList}">
 				<td th:text="${apartment.id}"></td>
 				<td th:text="${apartment.personId}"></td>
 				<td th:text="${apartment.openDates}"></td>

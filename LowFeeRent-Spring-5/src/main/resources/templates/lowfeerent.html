@@ -31,8 +31,10 @@
 		<a href="#cities" class="w3-bar-item w3-button w3-mobile">Cities</a> <a
 			href="#about" class="w3-bar-item w3-button w3-mobile">About</a> <a
 			href="#contact" class="w3-bar-item w3-button w3-mobile">Contact</a> <a
-			href="#book"class="w3-bar-item w3-button w3-red w3-mobile">Book Now</a> <a href="/admin"
-			class="w3-bar-item w3-button w3-right w3-red w3-red w3-mobile">Admin Console</a>
+			href="#book" class="w3-bar-item w3-button w3-red w3-mobile">Book
+			Now</a> <a href="/admin"
+			class="w3-bar-item w3-button w3-right w3-red w3-red w3-mobile">Admin
+			Console</a>
 
 	</div>
 	<!-- Header -->
@@ -76,28 +78,28 @@
 			<p>Make yourself at home is our slogan. We offer the best beds in
 				the industry. Sleep well and rest well.</p>
 		</div>
-		<form action="filter" target="_blank">
+		<form th:action="@{/}">
 			<div class="w3-row-padding">
 				<div class="w3-col m3">
-					<label><i class="fa fa-money"></i> Price, €</label> <input
-						name="priceMax" class="w3-input w3-border" type="number"
-						placeholder="100" min=100 max=5000>
+					<label><i class="fa fa-money"></i> Price Max, €</label> <input
+						th:value="${price}" name="price" class="w3-input w3-border"
+						type="number" min=100 max=5000>
 				</div>
-<!-- 				<div class="w3-col m3"> -->
-<!-- 					<label><i class="fa fa-arrows"></i> Area, m<sup>2</sup></label> <input -->
-<!-- 						name="area" class="w3-input w3-border" type="number" -->
-<!-- 						placeholder="100" min=20 max=500> -->
-<!-- 				</div> -->
 				<div class="w3-col m3">
-					<label><i class="fa fa-square"></i> Rooms</label> <input
-						name="roomsMin" class="w3-input w3-border" type="number"
-						placeholder="1" value=1 min=0 max=6>
+					<label><i class="fa fa-arrows"></i> Area, m<sup>2</sup></label> <input
+						th:value="${area}" name="area" class="w3-input w3-border"
+						type="number" min=20 max=500>
 				</div>
-<!-- 				<div class="w3-col m3"> -->
-<!-- 					<label><i class="fa fa-bath"></i> Bathrooms</label> <input -->
-<!-- 						name="bathrooms" class="w3-input w3-border" type="number" -->
-<!-- 						placeholder="1" value=1 min=0 max=6> -->
-<!-- 				</div> -->
+				<div class="w3-col m3">
+					<label><i class="fa fa-square"></i> Rooms Min</label> <input
+						th:value="${rooms}" name="rooms" class="w3-input w3-border"
+						type="number" value="${rooms}" min=0 max=6>
+				</div>
+				<div class="w3-col m3">
+					<label><i class="fa fa-bath"></i> Bathrooms</label> <input
+						th:value="${bathrooms}" name="bathrooms"
+						class="w3-input w3-border" type="number" min=0 max=6>
+				</div>
 				<div class="w3-col m3">
 					<label><i class="fa fa-search"></i> Filter</label>
 					<button class="w3-button w3-block w3-black">Filter</button>
@@ -107,7 +109,7 @@
 
 		<div class="w3-row-padding w3-padding-16">
 			<div class="w3-third w3-margin-bottom"
-				th:each="apartment:${apartmentListfromControllerAndDB}">
+				th:each="apartment:${apartmentList}">
 				<img th:src="@{/img/a/}+${apartment.id}+@{.jpg}" alt="Norway"
 					style="width: 100%">
 				<div class="w3-container w3-white">
@@ -133,7 +135,7 @@
 		<div class="w3-panel w3-padding-32">
 			<h1>Apartment List from Database H2</h1>
 			<h3>Table of apartment</h3>
-			<table class="w3-table-all">
+			<table class="w3-table-all" id="myTable">
 				<tr class="w3-black w3-hover-teal">
 					<td>id</td>
 					<td>personId</td>
@@ -144,7 +146,7 @@
 					<td>bathrooms</td>
 					<td>address</td>
 				</tr>
-				<tr th:each="apartment:${apartmentListfromControllerAndDB}">
+				<tr th:each="apartment:${apartmentList}">
 					<td th:text="${apartment.id}"></td>
 					<td th:text="${apartment.personId}"></td>
 					<td th:text="${apartment.openDates}"></td>
@@ -317,6 +319,8 @@
 		</p>
 	</footer>
 
+
+
 	<!-- Add Google Maps -->
 	<script>
 		function getDate() {
@@ -350,10 +354,40 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0Ql4vFOhb7hCuDESjFeMzeGOUu_4VZ-Y&callback=initMap&libraries=&v=weekly"
 		async></script>
 
-
 	<script type="text/javascript">
-		
+		// 	const submit_filterform = () => {
+
+		// 		var price = document.getElementsByName('priceMax').value;
+		// 		  var rooms = document.getElementsByName('roomsMin').value;
+		// 		  console.log(priceMax);
+		// 		  console.log(roomsMin);
+
+		// 	}
+
+		// 		function myFunction() {
+		// 			var input, filter, table, tr, td, cell, i, j;
+		// 			input = document.getElementById("myInput");
+		// 			filter = input.value.toUpperCase();
+		// 			table = document.getElementById("myTable");
+		// 			tr = table.getElementsByTagName("tr");
+		// 			for (i = 1; i < tr.length; i++) {
+		// 				// Hide the row initially.
+		// 				tr[i].style.display = "none";
+
+		// 				td = tr[i].getElementsByTagName("td");
+		// 				for (var j = 0; j < td.length; j++) {
+		// 					cell = tr[i].getElementsByTagName("td")[j];
+		// 					if (cell) {
+		// 						if (cell.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		// 							tr[i].style.display = "";
+		// 							break;
+		// 						}
+		// 					}
+		// 				}
+		// 			}
+		// 		}
 	</script>
+
 	<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp

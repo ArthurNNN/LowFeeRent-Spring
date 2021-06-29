@@ -18,7 +18,7 @@ public class Request {
 	String personId;
 	LocalDate checkin;
 	LocalDate checkout;
-	int priceMax;
+	Integer priceMax;
 	Integer areaMin;
 	Integer roomsMin;
 	Integer bathroomsMin;
@@ -28,14 +28,25 @@ public class Request {
 		this.setId();
 	}
 
-	public Request(int priceMax, Integer roomsMin) {
+	public Request(Integer priceMax, Integer roomsMin) {
 		super();
 		this.setId();
 		this.priceMax = priceMax;
 		this.roomsMin = roomsMin;
 	}
+	
+	
 
-	public Request(LocalDate checkin, LocalDate checkout, int priceMax, Integer areaMin, Integer roomsMin,
+	public Request(Integer priceMax, Integer areaMin, Integer roomsMin, Integer bathroomsMin) {
+		super();
+		this.setId();
+		this.priceMax = priceMax;
+		this.areaMin = areaMin;
+		this.roomsMin = roomsMin;
+		this.bathroomsMin = bathroomsMin;
+	}
+
+	public Request(LocalDate checkin, LocalDate checkout, Integer priceMax, Integer areaMin, Integer roomsMin,
 			Integer bathroomsMin) {
 		super();
 		this.setId();
@@ -84,7 +95,7 @@ public class Request {
 		return priceMax;
 	}
 
-	public void setPriceMax(int priceMax) {
+	public void setPriceMax(Integer priceMax) {
 		this.priceMax = priceMax;
 	}
 

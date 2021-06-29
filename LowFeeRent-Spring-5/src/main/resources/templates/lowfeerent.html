@@ -78,26 +78,26 @@
 			<p>Make yourself at home is our slogan. We offer the best beds in
 				the industry. Sleep well and rest well.</p>
 		</div>
-		<form th:action="@{/}">
+		<form th:action="@{/}" th:object="${requestFromController}" method="post">
 			<div class="w3-row-padding">
 				<div class="w3-col m3">
 					<label><i class="fa fa-money"></i> Price Max, €</label> <input
-						th:value="${price}" th:field="*{price}" name="price" class="w3-input w3-border"
+						 th:field="*{priceMax}" name="price" class="w3-input w3-border"
 						type="number" min=100 max=5000>
 				</div>
 				<div class="w3-col m3">
 					<label><i class="fa fa-arrows"></i> Area, m<sup>2</sup></label> <input
-						th:value="${area}" th:field="*{area}" name="area" class="w3-input w3-border"
+						 th:field="*{areaMin}" name="area" class="w3-input w3-border"
 						type="number" min=20 max=500>
 				</div>
 				<div class="w3-col m3">
 					<label><i class="fa fa-square"></i> Rooms Min</label> <input
-						th:value="${rooms}" th:field="*{rooms}" name="rooms" class="w3-input w3-border"
+						 th:field="*{roomsMin}" name="rooms" class="w3-input w3-border"
 						type="number" value="${rooms}" min=0 max=6>
 				</div>
 				<div class="w3-col m3">
 					<label><i class="fa fa-bath"></i> Bathrooms</label> <input
-						th:value="${bathrooms}" th:field="*{bathrooms}" name="bathrooms"
+						 th:field="*{bathroomsMin}" name="bathrooms"
 						class="w3-input w3-border" type="number" min=0 max=6>
 				</div>
 				<div class="w3-col m3">

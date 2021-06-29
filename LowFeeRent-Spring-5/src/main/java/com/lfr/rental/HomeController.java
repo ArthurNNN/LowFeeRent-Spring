@@ -24,37 +24,52 @@ public class HomeController {
 	RequestRepository requestRepository;
 
 	@RequestMapping("/")
-	public String getApartments(Model boxToView, @Param("price") Integer price, @Param("area") Integer area,
-			@Param("rooms") Integer rooms, @Param("bathrooms") Integer bathrooms) {
+	public String home(Model boxToView, Request req) {
 
-//		System.out.println("price: " + price);
-//		System.out.println("price >= null: " + (1500 > null));
-//		System.out.println("area: " + area);
-//		System.out.println("rooms: " + rooms);
-//		System.out.println("bathrooms: " + bathrooms);
+		
+		
+		Integer price = req.priceMax != null ? req.priceMax : 100000;
+		Integer area = req.areaMin != null ? req.areaMin : 0;
+		Integer rooms = req.roomsMin != null ? req.roomsMin : 0;
+		Integer bathrooms = req.bathroomsMin != null ? req.bathroomsMin : 0;
+				
+//		Request req = new Request(price, area, rooms, bathrooms);
 
-		if (price == null) {
-			price = 10000;
-		}
-		if (area == null) {
-			area = 0;
-		}
-		if (rooms == null) {
-			rooms = 0;
-		}
-		if (bathrooms == null) {
-			bathrooms = 0;
-		}
 
 		boxToView.addAttribute("apartmentList", apartmentRepository.fetchApartments(price, area, rooms, bathrooms));
-
 
 		return "lowfeerent.html";
 	}
 
+	@RequestMapping("/fillin")
+	public String fillApartments(int qtyToCreate) {
+		Faker faker = new Faker();
+		System.out.print("\n---------------- Adding " + qtyToCreate + " apartments: ----------------");
+		int n = 1;
+		while (n <= qtyToCreate) {
+			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
+					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
+
+			HashMap<LocalDate, LocalDate> dates = new HashMap<LocalDate, LocalDate>();
+			dates.put(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
+			dates.put(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
+			dates.put(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
+			apartment.setOpenDates(dates);
+
+			apartmentRepository.save(apartment);
+			System.out.print("\n#" + n + " ");
+			System.out.print(apartment);
+			n++;
+		}
+
+		return "home";
+	}
+
 	@RequestMapping("/admin")
 	public String getAdminConsole(Model boxToView) {
-		// System.out.println(request);
 
 		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 

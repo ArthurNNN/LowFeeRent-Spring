@@ -1,13 +1,19 @@
 package com.lfr.rental;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.lfr.utils.Utils;
 
@@ -18,7 +24,9 @@ public class Apartment {
 	@Id
 	String id;
 	String personId;
-	HashMap<LocalDate, LocalDate> openDates;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@ElementCollection
+	List<LocalDate> openDates;
 	@Column(name="price")
 	int price;
 	@Column(name="area")
@@ -39,7 +47,7 @@ public class Apartment {
 		super();
 		//counter++;
 		this.setId();
-		this.openDates = new HashMap<LocalDate, LocalDate>();
+		this.openDates = new ArrayList<LocalDate>();
 		
 	}
 
@@ -77,11 +85,11 @@ public class Apartment {
 		this.personId = personId;
 	}
 
-	public HashMap<LocalDate, LocalDate> getDates() {
+	public List<LocalDate> getDates() {
 		return openDates;
 	}
 
-	public void setDates(HashMap<LocalDate, LocalDate> dates) {
+	public void setDates(List<LocalDate> dates) {
 		this.openDates = dates;
 	}
 
@@ -125,11 +133,11 @@ public class Apartment {
 		this.bathrooms = bathrooms;
 	}
 
-	public HashMap<LocalDate, LocalDate> getOpenDates() {
+	public List<LocalDate> getOpenDates() {
 		return openDates;
 	}
 
-	public void setOpenDates(HashMap<LocalDate, LocalDate> openDates) {
+	public void setOpenDates(List<LocalDate> openDates) {
 		this.openDates = openDates;
 	}
 

@@ -3,24 +3,36 @@ package com.lfr.rental;
 import java.time.LocalDate;
 //import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.lfr.utils.Utils;
 
 @Entity
 @Table
+
 public class Request {
 
 	@Id
 	String id;
 	String personId;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	LocalDate checkin;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	LocalDate checkout;
+
+
+	@Column(name="priceMax")
 	Integer priceMax;
+	@Column(name="areaMin")
 	Integer areaMin;
+	@Column(name="roomsMin")
 	Integer roomsMin;
+	@Column(name="bathroomsMin")
 	Integer bathroomsMin;
 
 	public Request() {
@@ -33,6 +45,13 @@ public class Request {
 		this.setId();
 		this.priceMax = priceMax;
 		this.roomsMin = roomsMin;
+	}
+	
+	public Request(LocalDate checkin, LocalDate checkout) {
+		super();
+		this.setId();
+		this.checkin = checkin;
+		this.checkout = checkout;
 	}
 	
 	

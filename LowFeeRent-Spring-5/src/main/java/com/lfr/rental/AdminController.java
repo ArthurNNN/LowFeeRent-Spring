@@ -2,7 +2,9 @@ package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -54,10 +56,9 @@ public class AdminController {
 					.findById(Utils.randRange(1, (int) apartmentRepository.count()));
 
 			if (apartmentGen.isPresent() && personGen.isPresent()) {
-				HashMap<LocalDate, LocalDate> openDates = apartmentGen.get().getOpenDates();
-				HashMap.Entry<LocalDate, LocalDate> firstDateHM = openDates.entrySet().stream().findFirst().get();
-				LocalDate chekingDate = firstDateHM.getKey();
-				LocalDate chekoutDate = firstDateHM.getValue();
+				List<LocalDate> openDates = apartmentGen.get().getOpenDates();
+				LocalDate chekingDate = openDates.get(0);
+				LocalDate chekoutDate = openDates.get(1);
 				
 				Booking booking = new Booking( personGen.get(), apartmentGen.get(),
 						chekingDate, chekoutDate, Utils.randRange(8, 10) * 10);

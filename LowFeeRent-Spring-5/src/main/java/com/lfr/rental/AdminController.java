@@ -1,21 +1,14 @@
 package com.lfr.rental;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-
-import javax.persistence.Id;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.github.javafaker.Faker;
+
 import com.lfr.utils.Utils;
 
 @Controller

@@ -2,8 +2,6 @@ package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.github.javafaker.Faker;
 import com.lfr.utils.Utils;
@@ -42,12 +40,9 @@ public class ApartmentController {
 			apartment.setOpenDates(dates);
 
 			apartmentRepository.save(apartment);
-//			System.out.print("\n#" + n + " ");
-//			System.out.print(apartment);
 			n++;
 		}
 
-//		boxToView.addAttribute("apartmentList", apartmentRepository.fetchApartments(1000));
 		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 
 		return "redirect:/apartment/allApartments";

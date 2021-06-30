@@ -1,16 +1,11 @@
 package com.lfr.rental;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.ui.Model;
 
-import com.github.javafaker.Faker;
-import com.lfr.utils.Utils;
 
 public interface ApartmentRepository extends CrudRepository<Apartment, Integer> {
 

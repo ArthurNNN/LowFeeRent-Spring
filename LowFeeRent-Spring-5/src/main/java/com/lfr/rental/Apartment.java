@@ -3,19 +3,13 @@ package com.lfr.rental;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 import javax.persistence.Table;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.lfr.utils.Utils;
 
 @Entity
 @Table(name="apartment")

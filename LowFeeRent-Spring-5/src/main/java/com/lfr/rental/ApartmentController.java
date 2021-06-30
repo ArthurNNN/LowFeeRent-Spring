@@ -28,7 +28,7 @@ public class ApartmentController {
 	public String fillApartments(Model boxToView) {
 		Faker faker = new Faker();
 		int n = 1;
-		while (n <= 100) {
+		while (n <= 32) {
 			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
 					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
 

@@ -2,32 +2,48 @@ package com.lfr.rental;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
+
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 @Entity
-@Table(name="apartment")
+@Table(name = "apartment")
 public class Apartment {
 
 	@Id
 	String id;
 	String personId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
+//	@ElementCollection
+//    @MapKeyColumn(name = "item")
+//    @Column(name = "qty")
+//    @CollectionTable(name = "ITEM_QTY")
+//    private Map<String, Integer> itemQtyMap;
+
+	@ElementCollection
+	@MapKeyColumn(name = "checkin")
+	@Column(name = "checkout")
+	@CollectionTable(name = "APT_OPEN_DATES")
+	Map<LocalDate, LocalDate> aptOpenDates;
+
 	@ElementCollection
 	List<LocalDate> openDates;
-	@Column(name="price")
+	@Column(name = "price")
 	int price;
-	@Column(name="area")
+	@Column(name = "area")
 	int area;
-	@Column(name="rooms")
+	@Column(name = "rooms")
 	int rooms;
-	@Column(name="bathrooms")
+	@Column(name = "bathrooms")
 	int bathrooms;
 	String address;
 
@@ -39,10 +55,10 @@ public class Apartment {
 
 	public Apartment() {
 		super();
-		//counter++;
+		// counter++;
 		this.setId();
 		this.openDates = new ArrayList<LocalDate>();
-		
+
 	}
 
 	public Apartment(int price, int area, int rooms, int bathrooms, String address) {
@@ -54,7 +70,7 @@ public class Apartment {
 		this.rooms = rooms;
 		this.bathrooms = bathrooms;
 		this.address = address;
-		
+
 	}
 
 	public String getId() {

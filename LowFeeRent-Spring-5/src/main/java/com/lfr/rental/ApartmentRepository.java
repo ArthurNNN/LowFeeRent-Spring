@@ -14,4 +14,6 @@ public interface ApartmentRepository extends CrudRepository<Apartment, Integer> 
 //			@Param("checkin") LocalDate checkin, @Param("checkout") LocalDate checkout, 
 			@Param("price") Integer price, @Param("area") Integer area,
 			@Param("rooms") Integer rooms, @Param("bathrooms") Integer bathrooms);
+	
+	//INNER JOIN APARTMENT_OPEN_DATES aod ON aod.apartment_id = a.id AND
 }

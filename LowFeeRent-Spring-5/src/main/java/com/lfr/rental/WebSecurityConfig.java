@@ -30,6 +30,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.permitAll();
+		
+	    // add this line to use H2 web console
+//	    http.headers().frameOptions().disable();
+	    
+	    http.csrf().disable();
+	    http.headers().frameOptions().disable();
 	}
 
 	@Bean

@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" th:href="@{/css/w3.css}">
+<link rel="stylesheet" th:href="@{/css/css.css}">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" />
 
 <body>
 
-	<div class="w3-panel w3-padding-32">
-		<h1>Spring Boot with BankAccount Iterable List from BD H2</h1>
-		<h3>Table of bankAccount</h3>
+	<div layout:fragment="content">
 
-		<table class="w3-table-all">
+		<div class="w3-panel w3-padding-32">
+			<h1>Spring Boot with BankAccount Iterable List from BD H2</h1>
+			<h3>Table of bankAccount</h3>
 
-			<tr class="w3-black w3-hover-teal">
+			<table class="w3-table-all">
 
-
-				<td > iban</td>
-				<td > amount </td>
+				<tr class="w3-black w3-hover-teal">
 
 
-
-			</tr>
-
-			<tr th:each="bankAccount:${bankAccountListfromControllerAndDB}">
+					<td>iban</td>
+					<td>amount</td>
 
 
 
-				<td th:text="${bankAccount.iban}"></td>
-				<td th:text="${bankAccount.amount}"></td>
+				</tr>
+
+				<tr th:each="bankAccount:${bankAccountListfromControllerAndDB}">
 
 
 
-			</tr>
-		</table>
+					<td th:text="${bankAccount.iban}"></td>
+					<td th:text="${bankAccount.amount}"></td>
 
+
+
+				</tr>
+			</table>
+		</div>
 	</div>
 </html>

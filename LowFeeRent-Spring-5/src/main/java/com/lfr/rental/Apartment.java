@@ -9,6 +9,8 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.Table;
@@ -19,24 +21,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Apartment {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	String id;
 	String personId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
-//	@ElementCollection
-//    @MapKeyColumn(name = "item")
-//    @Column(name = "qty")
-//    @CollectionTable(name = "ITEM_QTY")
-//    private Map<String, Integer> itemQtyMap;
-
+//	@CollectionTable(name="open_dates")
 	@ElementCollection
 	@MapKeyColumn(name = "checkin")
 	@Column(name = "checkout")
-	@CollectionTable(name = "APT_OPEN_DATES")
-	Map<LocalDate, LocalDate> aptOpenDates;
+	Map<LocalDate, LocalDate> openDates;
 
-	@ElementCollection
-	List<LocalDate> openDates;
 	@Column(name = "price")
 	int price;
 	@Column(name = "area")
@@ -57,7 +52,7 @@ public class Apartment {
 		super();
 		// counter++;
 		this.setId();
-		this.openDates = new ArrayList<LocalDate>();
+//		this.openDates = new ArrayList<LocalDate>();
 
 	}
 
@@ -93,14 +88,6 @@ public class Apartment {
 
 	public void setPersonId(String personId) {
 		this.personId = personId;
-	}
-
-	public List<LocalDate> getDates() {
-		return openDates;
-	}
-
-	public void setDates(List<LocalDate> dates) {
-		this.openDates = dates;
 	}
 
 	public String getAddress() {
@@ -143,18 +130,18 @@ public class Apartment {
 		this.bathrooms = bathrooms;
 	}
 
-	public List<LocalDate> getOpenDates() {
+	public Map<LocalDate, LocalDate> getOpenDates() {
 		return openDates;
 	}
 
-	public void setOpenDates(List<LocalDate> openDates) {
+	public void setOpenDates(Map<LocalDate, LocalDate> openDates) {
 		this.openDates = openDates;
 	}
 
 	@Override
 	public String toString() {
 		return "Apartment [id=" + id + ", personId=" + personId +
-		// ", openDates=" + openDates +
+		 ", openDates=" + openDates +
 				", price=" + price + ", area=" + area + ", rooms=" + rooms + ", bathrooms=" + bathrooms + ", address="
 				+ address + "]";
 	}

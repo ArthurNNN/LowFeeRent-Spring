@@ -1,7 +1,8 @@
 package com.lfr.rental;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 
 import com.github.javafaker.Faker;
 import com.lfr.utils.Utils;
@@ -30,18 +30,48 @@ public class ApartmentController {
 			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
 					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
 
-			ArrayList<LocalDate> dates = new ArrayList<LocalDate>();
-			dates.add(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)));
-			dates.add(LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
-			dates.add(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)));
-			dates.add(LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
-			dates.add(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)));
-			dates.add(LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
-			apartment.setOpenDates(dates);
+//			ArrayList<LocalDate> dates = new ArrayList<LocalDate>();
+//			dates.add(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)));
+//			dates.add(LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
+//			dates.add(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)));
+//			dates.add(LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
+//			dates.add(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)));
+//			dates.add(LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
+//			apartment.setOpenDates(dates);
+
+			Map<LocalDate, LocalDate> datesMap = new HashMap<LocalDate, LocalDate>();
+			datesMap.put(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
+			datesMap.put(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)),
+					LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
+			
+			System.out.println(datesMap);
+			apartment.setOpenDates(datesMap);
 
 			apartmentRepository.save(apartment);
 			n++;
 		}
+
+//		while (n <= 10) {
+//			Apartment apartment = new Apartment(Utils.randRange(8, 25) * 100, Utils.randRange(6, 18) * 10,
+//					Utils.randRange(1, 5), Utils.randRange(1, 3), faker.address().streetAddress(true));
+//
+//			HashMap<LocalDate, LocalDate> dates = new HashMap<LocalDate, LocalDate>();
+//			dates.put(LocalDate.of(2021, Utils.randRange(1, 4), Utils.randRange(1, 28)),
+//					LocalDate.of(2021, Utils.randRange(3, 4), Utils.randRange(1, 28)));
+//			dates.put(LocalDate.of(2021, Utils.randRange(5, 8), Utils.randRange(1, 28)),
+//					LocalDate.of(2021, Utils.randRange(7, 8), Utils.randRange(1, 28)));
+//			dates.put(LocalDate.of(2021, Utils.randRange(9, 12), Utils.randRange(1, 28)),
+//					LocalDate.of(2021, Utils.randRange(10, 12), Utils.randRange(1, 28)));
+//			apartment.setOpenDates(dates);
+//
+//			apartmentRepository.save(apartment);
+//			System.out.print("\n#" + n + " ");
+//			System.out.print(apartment);
+//			n++;
+//		}
 
 		boxToView.addAttribute("apartmentList", apartmentRepository.findAll());
 

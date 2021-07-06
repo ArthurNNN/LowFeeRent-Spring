@@ -8,8 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface ApartmentRepository extends CrudRepository<Apartment, Integer> {
 
-	@Query("select a from Apartment a " + "join a.openDates od "
-			+ "where (key(od) < :checkin and :checkout in elements(a.openDates)) "
+	@Query("select a from Apartment a join a.openDates od"
+			+ " where (key(od) <= :checkin and od >= :checkout) "
 			+ "and a.price <= :price AND a.area >= :area AND a.rooms >= :rooms AND a.bathrooms >= :bathrooms")
 	List<Apartment> fetchApartments(@Param("checkin") LocalDate checkin, @Param("checkout") LocalDate checkout,
 			@Param("price") Integer price, @Param("area") Integer area, @Param("rooms") Integer rooms,

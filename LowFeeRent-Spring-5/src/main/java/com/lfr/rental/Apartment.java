@@ -26,7 +26,6 @@ public class Apartment {
 	String personId;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
-//	@CollectionTable(name="open_dates")
 	@ElementCollection
 	@MapKeyColumn(name = "checkin")
 	@Column(name = "checkout")
